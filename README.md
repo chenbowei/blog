@@ -48,6 +48,22 @@ PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN=你的 token
 
 文章页还会自动显示阅读时间、英文词数和中文字符数。
 
+## 广告
+
+项目已接入 Google AdSense，发布商 ID 为：
+
+```text
+ca-pub-1321655155545412
+```
+
+AdSense 脚本会自动放到页面 `<head>` 中。文章底部广告位需要创建广告单元后，在 Cloudflare Pages 环境变量里填入：
+
+```text
+PUBLIC_ADSENSE_ARTICLE_SLOT=你的广告单元 slot
+```
+
+如果只使用自动广告，不需要配置 `PUBLIC_ADSENSE_ARTICLE_SLOT`。
+
 ## 留言功能
 
 文章页支持 Giscus 留言。它基于 GitHub Discussions，适合静态博客。

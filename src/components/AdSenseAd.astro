@@ -1,0 +1,25 @@
+---
+const adClient = import.meta.env.PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-1321655155545412';
+const adSlot = import.meta.env.PUBLIC_ADSENSE_ARTICLE_SLOT;
+const isEnabled = Boolean(adClient && adSlot);
+---
+
+{
+  isEnabled && (
+    <section class="ad-block" aria-label="Advertisement">
+      <p class="ad-label">
+        <span data-i18n="en">Advertisement</span>
+        <span data-i18n="zh">广告</span>
+      </p>
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={adClient}
+        data-ad-slot={adSlot}
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+      <script is:inline>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </section>
+  )
+}

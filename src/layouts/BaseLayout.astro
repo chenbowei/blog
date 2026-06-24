@@ -13,6 +13,7 @@ const {
 
 const pageTitle = title === 'Notebook' ? title : `${title} | Notebook`;
 const analyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN;
+const adSenseClient = import.meta.env.PUBLIC_ADSENSE_CLIENT ?? 'ca-pub-1321655155545412';
 ---
 
 <!doctype html>
@@ -24,6 +25,15 @@ const analyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    {
+      adSenseClient && (
+        <script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adSenseClient}`}
+          crossorigin="anonymous"
+        />
+      )
+    }
     {
       analyticsToken && (
         <script
