@@ -14,8 +14,8 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('zh-CN', {
+const formatDate = (date: Date, locale: string) =>
+  new Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -25,9 +25,18 @@ const formatDate = (date: Date) =>
 <BaseLayout title={post.data.title} description={post.data.description}>
   <article>
     <header class="hero">
-      <p class="eyebrow">{formatDate(post.data.pubDate)}</p>
-      <h1>{post.data.title}</h1>
-      <p class="lede">{post.data.description}</p>
+      <p class="eyebrow">
+        <span data-i18n="en">{formatDate(post.data.pubDate, 'en-US')}</span>
+        <span data-i18n="zh">{formatDate(post.data.pubDate, 'zh-CN')}</span>
+      </p>
+      <h1>
+        <span data-i18n="en">{post.data.title}</span>
+        <span data-i18n="zh">{post.data.titleZh ?? post.data.title}</span>
+      </h1>
+      <p class="lede">
+        <span data-i18n="en">{post.data.description}</span>
+        <span data-i18n="zh">{post.data.descriptionZh ?? post.data.description}</span>
+      </p>
       {
         post.data.tags.length > 0 && (
           <ul class="tags">

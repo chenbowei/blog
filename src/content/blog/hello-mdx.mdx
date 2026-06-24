@@ -1,11 +1,29 @@
 ---
 title: Hello, MDX
-description: 第一篇文章，用它确认 Astro 内容集合和 MDX 渲染正常。
+titleZh: 你好，MDX
+description: A first post to confirm that Astro content collections and MDX rendering work.
+descriptionZh: 第一篇文章，用它确认 Astro 内容集合和 MDX 渲染正常。
 pubDate: 2026-06-24
 tags:
   - Astro
   - MDX
   - Cloudflare
+---
+
+This is the English version of the post. MDX lets you write in Markdown and use components directly inside your articles.
+
+## Code Highlighting
+
+```ts
+const stack = ['Astro 6', 'MDX', 'Cloudflare'];
+
+console.log(stack.join(' + '));
+```
+
+## Next Step
+
+Create a new `.md` or `.mdx` file in `src/content/blog/`, fill in the frontmatter, and the post will appear on the home page and archive automatically.
+
 ---
 
 MDX 让你用 Markdown 写文章，也可以在文章里直接使用组件。

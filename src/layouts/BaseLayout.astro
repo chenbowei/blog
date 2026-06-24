@@ -7,15 +7,15 @@ interface Props {
 }
 
 const {
-  title = '日记本',
-  description = '一间用 Astro 和 MDX 搭起来的私人写作角落。'
+  title = 'Notebook',
+  description = 'A quiet writing corner built with Astro and MDX.'
 } = Astro.props;
 
-const pageTitle = title === '日记本' ? title : `${title} | 日记本`;
+const pageTitle = title === 'Notebook' ? title : `${title} | Notebook`;
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en" data-lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -27,18 +27,50 @@ const pageTitle = title === '日记本' ? title : `${title} | 日记本`;
   <body>
     <div class="site-shell">
       <header class="site-header">
-        <a class="brand" href="/">日记本</a>
-        <nav class="nav" aria-label="主导航">
-          <a href="/">首页</a>
-          <a href="/blog/">文章</a>
+        <a class="brand" href="/">
+          <span data-i18n="en">Notebook</span>
+          <span data-i18n="zh">日记本</span>
+        </a>
+        <nav class="nav" aria-label="Primary navigation">
+          <a href="/">
+            <span data-i18n="en">Home</span>
+            <span data-i18n="zh">首页</span>
+          </a>
+          <a href="/blog/">
+            <span data-i18n="en">Archive</span>
+            <span data-i18n="zh">文章</span>
+          </a>
+          <button class="language-toggle" type="button" aria-label="Switch language" data-language-toggle>
+            <span data-i18n="en">中文</span>
+            <span data-i18n="zh">English</span>
+          </button>
         </nav>
       </header>
       <main>
         <slot />
       </main>
       <footer class="site-footer">
-        写下今天，也给明天留一点线索。
+        <span data-i18n="en">Keep a small record of today for tomorrow.</span>
+        <span data-i18n="zh">写下今天，也给明天留一点线索。</span>
       </footer>
     </div>
+    <script>
+      const root = document.documentElement;
+      const toggle = document.querySelector('[data-language-toggle]');
+      const savedLanguage = localStorage.getItem('language');
+      const language = savedLanguage === 'zh' ? 'zh' : 'en';
+
+      function setLanguage(nextLanguage) {
+        root.dataset.lang = nextLanguage;
+        root.lang = nextLanguage === 'zh' ? 'zh-CN' : 'en';
+        localStorage.setItem('language', nextLanguage);
+      }
+
+      setLanguage(language);
+
+      toggle?.addEventListener('click', () => {
+        setLanguage(root.dataset.lang === 'zh' ? 'en' : 'zh');
+      });
+    </script>
   </body>
 </html>

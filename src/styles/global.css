@@ -43,6 +43,18 @@ a:hover {
   color: var(--accent-strong);
 }
 
+[data-i18n="zh"] {
+  display: none;
+}
+
+html[data-lang="zh"] [data-i18n="en"] {
+  display: none;
+}
+
+html[data-lang="zh"] [data-i18n="zh"] {
+  display: inline;
+}
+
 .site-shell {
   width: min(100% - 28px, 880px);
   margin: 28px auto;
@@ -71,6 +83,7 @@ a:hover {
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 16px;
   font-family:
     ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -85,6 +98,24 @@ a:hover {
 
 .nav a:hover {
   color: var(--text);
+}
+
+.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 10px;
+  background: var(--paper-soft);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font: inherit;
+}
+
+.language-toggle:hover {
+  border-color: var(--accent);
 }
 
 main {

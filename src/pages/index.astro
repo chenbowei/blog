@@ -7,8 +7,8 @@ const posts = (await getCollection('blog'))
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
   .slice(0, 3);
 
-const formatDate = (date: Date) =>
-  new Intl.DateTimeFormat('zh-CN', {
+const formatDate = (date: Date, locale: string) =>
+  new Intl.DateTimeFormat(locale, {
     year: 'numeric',
     month: 'long',
     day: 'numeric'
@@ -18,23 +18,39 @@ const formatDate = (date: Date) =>
 <BaseLayout>
   <section class="hero">
     <p class="eyebrow">Daily Notes</p>
-    <h1>把日子慢慢写下来。</h1>
+    <h1>
+      <span data-i18n="en">Write the days down slowly.</span>
+      <span data-i18n="zh">把日子慢慢写下来。</span>
+    </h1>
     <p class="lede">
-      这里放一些生活片段、学习记录和不急着下结论的想法。
+      <span data-i18n="en">A place for small life fragments, learning notes, and thoughts that do not need to hurry.</span>
+      <span data-i18n="zh">这里放一些生活片段、学习记录和不急着下结论的想法。</span>
     </p>
   </section>
 
   <section aria-labelledby="latest-posts">
-    <h2 id="latest-posts">最新文章</h2>
+    <h2 id="latest-posts">
+      <span data-i18n="en">Latest Posts</span>
+      <span data-i18n="zh">最新文章</span>
+    </h2>
     <div class="post-list">
       {
         posts.map((post) => (
           <article class="post-card">
-            <p class="meta">{formatDate(post.data.pubDate)}</p>
+            <p class="meta">
+              <span data-i18n="en">{formatDate(post.data.pubDate, 'en-US')}</span>
+              <span data-i18n="zh">{formatDate(post.data.pubDate, 'zh-CN')}</span>
+            </p>
             <h2>
-              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+              <a href={`/blog/${post.id}/`}>
+                <span data-i18n="en">{post.data.title}</span>
+                <span data-i18n="zh">{post.data.titleZh ?? post.data.title}</span>
+              </a>
             </h2>
-            <p class="summary">{post.data.description}</p>
+            <p class="summary">
+              <span data-i18n="en">{post.data.description}</span>
+              <span data-i18n="zh">{post.data.descriptionZh ?? post.data.description}</span>
+            </p>
             {post.data.tags.length > 0 && (
               <ul class="tags">
                 {post.data.tags.map((tag) => (
