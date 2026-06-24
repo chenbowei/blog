@@ -88,6 +88,9 @@ const imageUrl = new URL(image, Astro.site);
             <span data-i18n="en">Archive</span>
             <span data-i18n="zh">文章</span>
           </a>
+          <a href="https://www.facebook.com/BobbyChen.CA/" target="_blank" rel="me noopener noreferrer">
+            Facebook
+          </a>
           <button class="language-toggle" type="button" aria-label="Switch language" data-language-toggle>
             <span data-i18n="en">中文</span>
             <span data-i18n="zh">English</span>
@@ -98,8 +101,13 @@ const imageUrl = new URL(image, Astro.site);
         <slot />
       </main>
       <footer class="site-footer">
-        <span data-i18n="en">Keep a small record of today for tomorrow.</span>
-        <span data-i18n="zh">写下今天，也给明天留一点线索。</span>
+        <span>
+          <span data-i18n="en">Keep a small record of today for tomorrow.</span>
+          <span data-i18n="zh">写下今天，也给明天留一点线索。</span>
+        </span>
+        <a href="https://www.facebook.com/BobbyChen.CA/" target="_blank" rel="me noopener noreferrer">
+          Facebook
+        </a>
       </footer>
     </div>
     <script>
