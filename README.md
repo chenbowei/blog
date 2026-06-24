@@ -36,6 +36,18 @@ npm run build
 
 构建产物会输出到 `dist/`。
 
+## 访问统计
+
+项目支持 Cloudflare Web Analytics。到 Cloudflare Dashboard 创建 Web Analytics site 后，把 token 配到 Pages 环境变量：
+
+```text
+PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN=你的 token
+```
+
+配置后重新部署，页面会自动加载 Cloudflare 统计脚本。没有这个变量时不会加载统计脚本。
+
+文章页还会自动显示阅读时间、英文词数和中文字符数。
+
 ## 部署到 Cloudflare
 
 先登录 Wrangler：

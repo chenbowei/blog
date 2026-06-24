@@ -12,6 +12,7 @@ const {
 } = Astro.props;
 
 const pageTitle = title === 'Notebook' ? title : `${title} | Notebook`;
+const analyticsToken = import.meta.env.PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN;
 ---
 
 <!doctype html>
@@ -23,6 +24,15 @@ const pageTitle = title === 'Notebook' ? title : `${title} | Notebook`;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    {
+      analyticsToken && (
+        <script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon={JSON.stringify({ token: analyticsToken })}
+        />
+      )
+    }
   </head>
   <body>
     <div class="site-shell">

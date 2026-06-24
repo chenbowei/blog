@@ -13,6 +13,13 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const postBody = post.body ?? '';
+const englishWordCount = postBody.match(/[A-Za-z0-9]+(?:[-'][A-Za-z0-9]+)*/g)?.length ?? 0;
+const chineseCharacterCount = postBody.match(/[\u3400-\u9FFF]/g)?.length ?? 0;
+const readingMinutes = Math.max(
+  1,
+  Math.ceil(englishWordCount / 220 + chineseCharacterCount / 400)
+);
 
 const formatDate = (date: Date, locale: string) =>
   new Intl.DateTimeFormat(locale, {
@@ -36,6 +43,14 @@ const formatDate = (date: Date, locale: string) =>
       <p class="lede">
         <span data-i18n="en">{post.data.description}</span>
         <span data-i18n="zh">{post.data.descriptionZh ?? post.data.description}</span>
+      </p>
+      <p class="post-stats">
+        <span data-i18n="en">
+          {readingMinutes} min read · {englishWordCount} words · {chineseCharacterCount} Chinese chars
+        </span>
+        <span data-i18n="zh">
+          约 {readingMinutes} 分钟阅读 · {englishWordCount} 个英文词 · {chineseCharacterCount} 个中文字符
+        </span>
       </p>
       {
         post.data.tags.length > 0 && (
