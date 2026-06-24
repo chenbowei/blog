@@ -1,5 +1,6 @@
 ---
 import { getCollection, render } from 'astro:content';
+import Comments from '../../components/Comments.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
@@ -66,5 +67,7 @@ const formatDate = (date: Date, locale: string) =>
     <div class="prose">
       <Content />
     </div>
+
+    <Comments />
   </article>
 </BaseLayout>

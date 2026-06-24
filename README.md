@@ -48,6 +48,21 @@ PUBLIC_CLOUDFLARE_WEB_ANALYTICS_TOKEN=你的 token
 
 文章页还会自动显示阅读时间、英文词数和中文字符数。
 
+## 留言功能
+
+文章页支持 Giscus 留言。它基于 GitHub Discussions，适合静态博客。
+
+先在 GitHub 仓库启用 Discussions，然后到 <https://giscus.app/> 选择仓库和 Discussion 分类，复制生成配置里的值，填到 Cloudflare Pages 环境变量：
+
+```text
+PUBLIC_GISCUS_REPO=chenbowei/blog
+PUBLIC_GISCUS_REPO_ID=你的 repo id
+PUBLIC_GISCUS_CATEGORY=Announcements
+PUBLIC_GISCUS_CATEGORY_ID=你的 category id
+```
+
+保存后重新部署，文章页底部会显示留言区。注意：Giscus 使用的仓库需要公开，并且要安装 Giscus GitHub App。
+
 ## 部署到 Cloudflare
 
 先登录 Wrangler：

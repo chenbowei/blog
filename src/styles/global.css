@@ -316,6 +316,19 @@ h1 {
   font-size: 0.94em;
 }
 
+.comments {
+  max-width: 680px;
+  margin-top: 56px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.comments h2 {
+  margin: 0 0 18px;
+  font-size: 1.35rem;
+  font-weight: 500;
+}
+
 .site-footer {
   padding: 26px 0 38px;
   border-top: 1px solid var(--line);
