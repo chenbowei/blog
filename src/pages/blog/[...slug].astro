@@ -31,7 +31,13 @@ const formatDate = (date: Date, locale: string) =>
   }).format(date);
 ---
 
-<BaseLayout title={post.data.title} description={post.data.description}>
+<BaseLayout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  type="article"
+  publishedTime={post.data.pubDate}
+>
   <article>
     <header class="hero">
       <p class="eyebrow">

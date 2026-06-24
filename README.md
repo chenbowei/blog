@@ -36,6 +36,16 @@ npm run build
 
 构建产物会输出到 `dist/`。
 
+## SEO
+
+项目内置基础 SEO：
+
+- canonical URL
+- Open Graph / Twitter Card
+- `robots.txt`
+- `sitemap.xml`
+- `rss.xml`
+
 ## 访问统计
 
 项目支持 Cloudflare Web Analytics。到 Cloudflare Dashboard 创建 Web Analytics site 后，把 token 配到 Pages 环境变量：
