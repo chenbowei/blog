@@ -1,0 +1,50 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <p class="eyebrow">Daily Notes</p>
+    <h1>把日子慢慢写下来。</h1>
+    <p class="lede">
+      这里放一些生活片段、学习记录和不急着下结论的想法。
+    </p>
+  </section>
+
+  <section aria-labelledby="latest-posts">
+    <h2 id="latest-posts">最新文章</h2>
+    <div class="post-list">
+      {
+        posts.map((post) => (
+          <article class="post-card">
+            <p class="meta">{formatDate(post.data.pubDate)}</p>
+            <h2>
+              <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+            </h2>
+            <p class="summary">{post.data.description}</p>
+            {post.data.tags.length > 0 && (
+              <ul class="tags">
+                {post.data.tags.map((tag) => (
+                  <li class="tag">{tag}</li>
+                ))}
+              </ul>
+            )}
+          </article>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

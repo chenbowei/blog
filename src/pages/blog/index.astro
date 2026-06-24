@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const posts = (await getCollection('blog'))
+  .filter((post) => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const formatDate = (date: Date) =>
+  new Intl.DateTimeFormat('zh-CN', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  }).format(date);
+---
+
+<BaseLayout title="文章" description="全部博客文章">
+  <section class="hero">
+    <p class="eyebrow">Archive</p>
+    <h1>文章</h1>
+    <p class="lede">所有已发布的 MDX 内容都会自动出现在这里。</p>
+  </section>
+
+  <div class="post-list">
+    {
+      posts.map((post) => (
+        <article class="post-card">
+          <p class="meta">{formatDate(post.data.pubDate)}</p>
+          <h2>
+            <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+          </h2>
+          <p class="summary">{post.data.description}</p>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

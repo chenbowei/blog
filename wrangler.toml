@@ -1,0 +1,3 @@
+name = "astro-6-mdx-cloudflare-pages-blog"
+compatibility_date = "2026-06-24"
+pages_build_output_dir = "dist"
