@@ -10,6 +10,8 @@ tags:
   - Tangbian
 ---
 
+import ImageMarquee from '../../components/ImageMarquee.astro';
+
 昨天到塘边吃东北菜。
 
 算起来已经差不多快半年没来过了。门口、灯光、桌椅、菜单，好像都还是原来的样子，可人一旦隔了几个月再回来，很多东西就不太一样了。不是店变了，是自己变了。坐下来的那一刻，有一点恍如隔世。
@@ -22,18 +24,15 @@ tags:
 
 但也许这已经够了。至少在一个普通的晚上，重新到一个很久没来的地方，吃一顿热饭，确认自己还在往前走。
 
-![塘边东北菜照片 1](/images/tangbian-dongbei-2026-06-23/01.jpg)
-
-![塘边东北菜照片 2](/images/tangbian-dongbei-2026-06-23/02.jpg)
-
-![塘边东北菜照片 3](/images/tangbian-dongbei-2026-06-23/03.jpg)
-
-![塘边东北菜照片 4](/images/tangbian-dongbei-2026-06-23/04.jpg)
-
-![塘边东北菜照片 5](/images/tangbian-dongbei-2026-06-23/05.jpg)
-
-![塘边东北菜照片 6](/images/tangbian-dongbei-2026-06-23/06.jpg)
-
-![塘边东北菜照片 7](/images/tangbian-dongbei-2026-06-23/07.jpg)
-
-![塘边东北菜照片 8](/images/tangbian-dongbei-2026-06-23/08.jpg)
+<ImageMarquee
+  images={[
+    { src: '/images/tangbian-dongbei-2026-06-23/01.jpg', alt: '塘边东北菜照片 1' },
+    { src: '/images/tangbian-dongbei-2026-06-23/02.jpg', alt: '塘边东北菜照片 2' },
+    { src: '/images/tangbian-dongbei-2026-06-23/03.jpg', alt: '塘边东北菜照片 3' },
+    { src: '/images/tangbian-dongbei-2026-06-23/04.jpg', alt: '塘边东北菜照片 4' },
+    { src: '/images/tangbian-dongbei-2026-06-23/05.jpg', alt: '塘边东北菜照片 5' },
+    { src: '/images/tangbian-dongbei-2026-06-23/06.jpg', alt: '塘边东北菜照片 6' },
+    { src: '/images/tangbian-dongbei-2026-06-23/07.jpg', alt: '塘边东北菜照片 7' },
+    { src: '/images/tangbian-dongbei-2026-06-23/08.jpg', alt: '塘边东北菜照片 8' }
+  ]}
+/>

@@ -287,6 +287,60 @@ h1 {
   font-size: 0.94em;
 }
 
+.image-marquee {
+  width: min(100vw - 28px, 780px);
+  margin: 34px 0;
+  overflow: hidden;
+  border-block: 1px solid var(--line);
+  padding: 16px 0;
+}
+
+.image-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 14px;
+  animation: image-marquee-scroll 44s linear infinite;
+}
+
+.image-marquee:hover .image-marquee-track {
+  animation-play-state: paused;
+}
+
+.image-marquee-item {
+  flex: 0 0 auto;
+  width: clamp(220px, 42vw, 340px);
+  aspect-ratio: 1;
+  margin: 0;
+}
+
+.image-marquee-item img {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+@keyframes image-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 7px));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .image-marquee {
+    overflow-x: auto;
+  }
+
+  .image-marquee-track {
+    animation: none;
+  }
+}
+
 .comments {
   max-width: 680px;
   margin-top: 56px;

@@ -1,0 +1,25 @@
+---
+interface MarqueeImage {
+  src: string;
+  alt: string;
+}
+
+interface Props {
+  images: MarqueeImage[];
+}
+
+const { images } = Astro.props;
+const loopImages = [...images, ...images];
+---
+
+<div class="image-marquee" aria-label="Image gallery">
+  <div class="image-marquee-track">
+    {
+      loopImages.map((image) => (
+        <figure class="image-marquee-item">
+          <img src={image.src} alt={image.alt} loading="lazy" />
+        </figure>
+      ))
+    }
+  </div>
+</div>
